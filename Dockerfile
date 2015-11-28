@@ -6,7 +6,7 @@ MAINTAINER Takashi Takebayashi <changesworlds@gmail.com>
 # Update npm
 # Install sbt
 # Install the agent installer
-# Create Agents
+# Create Agent
 RUN apt-get update && \
     apt-get install -y --force-yes \
      curl \
@@ -25,7 +25,9 @@ RUN apt-get update && \
     npm install -g vsoagent-installer && \
     mkdir /opt/myagent && \
     cd /opt/myagent && \
-    vsoagent-installer
+    vsoagent-installer && \
+    echo "vsoagent\nvsoagent\n\n\n\n\n\n\n" | adduser vsoagent && \
+    chown -R vsoagent /opt/myagent
 
 WORKDIR /opt/myagent
 ENTRYPOINT /bin/bash
